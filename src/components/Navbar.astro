@@ -1,0 +1,37 @@
+---
+import Section from "./Section.astro";
+import CartIcon from "@/icons/CartIcon.astro";
+import MenuIcon from "@/icons/MenuIcon.astro";
+---
+
+<nav>
+  <div class="container">
+    <img src="/icons/Logo Bsheep.webp" alt="Bsheep Logo Dark" />
+    <div class="icons">
+      <CartIcon />
+      <MenuIcon />
+    </div>
+  </div>
+</nav>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  .icons {
+    display: flex;
+  }
+  @media (width <= 700px) {
+    img {
+      width: 100px;
+    }
+
+    .icons {
+      gap: 10px;
+    }
+  }
+</style>
