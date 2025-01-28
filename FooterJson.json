@@ -1,0 +1,25 @@
+{
+    "FooterSection":{
+        "FooterText": "© 2024 BSheep™. Todos los derechos son reservados.",
+        "FooterLocation": "Coquimbo, Chile",
+        "FooterSections": [
+            {
+                "SectionTitle": "Acerca de",
+                "SectionLinks": [
+                    {
+                        "LinkName": "Nosotros",
+                        "LinkURL": "#"
+                    },
+                    {
+                        "LinkName": "Envíos",
+                        "LinkURL": "#"
+                    },
+                    {
+                        "LinkName": "Contacto",
+                        "LinkURL": "#"
+                    }
+                ]
+            }            
+        ]
+    }
+}

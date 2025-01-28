@@ -1,5 +1,103 @@
 ---
-import Section from "@/components/Section.astro";
+import MapIcon from "@/icons/MapsIcon.astro";
 ---
 
-<Section title="Footer" />
+<footer>
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="/logos/white logo bsheep.png" alt="Logo BSheep" />
+    </div>
+    <div class="footer-links">
+      <div class="footer-section">
+        <h2>Acerca de</h2>
+        <ul>
+          <li><a href="#">Envíos</a></li>
+          <li><a href="#">Diseños</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="#">Políticas de privacidad</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+        </ul>
+      </div>
+    </div>
+    <span class="footer-divider"></span>
+    <div class="footer-bottom">
+      <p class="footer-location"><MapIcon /><span>Coquimbo</span>, Chile</p>
+      © 2024 BSheep™. Todos los derechos son reservados.
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    background-color: #000000;
+    color: #808080;
+    padding: 2rem 1rem;
+    font-size: 1rem;
+  }
+
+  h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-logo img {
+    width: 700px;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Espaciado entre enlaces */
+  }
+
+  .footer-section a {
+    color: #808080;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  .footer-section a:hover {
+    color: #ffffff;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-divider {
+    width: 100%;
+    height: 1.5px;
+    background-color: #808080;
+  }
+
+  .footer-location span {
+    color: #eebe10;
+  }
+
+  @media (width <= 700px) {
+    .footer-container {
+      min-height: 100vh;
+      min-width: 100vw;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .footer-logo img {
+      width: 350px;
+    }
+  }
+</style>
