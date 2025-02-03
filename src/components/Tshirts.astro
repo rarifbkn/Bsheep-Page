@@ -3,7 +3,56 @@ import Section from "@/components/Section.astro";
 ---
 
 <Section title="Poleras">
-  <p>Polera 1</p>
-  <p>Polera 2</p>
-  <p>Polera 3</p>
+  <div class="swiper tshirtSwiper">
+    <div class="swiper-wrapper">
+      <!--Slides -->
+      <div class="swiper-slide">
+        <img src="/tshirt/black tshirt.jpg" alt="poleron 1" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/tshirt/brown tshirt.jpg" alt="poleron 1" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/tshirt/white tshirt.jpg" alt="poleron 1" />
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
 </Section>
+<!-- Script para inicializar Swiper -->
+<script>
+  import Swiper from "swiper";
+  import { Pagination } from "swiper/modules";
+
+  new Swiper(".tshirtSwiper", {
+    modules: [Pagination],
+    pagination: {
+      el: ".swiper-pagination",
+      dynamicBullets: true,
+    },
+    loop: true,
+  });
+</script>
+
+<style>
+  .swiper {
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: #fff;
+  }
+
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+</style>
