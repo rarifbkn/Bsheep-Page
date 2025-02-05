@@ -2,7 +2,9 @@
   "extends": "astro/tsconfigs/strict",
   "include": [
     ".astro/types.d.ts",
-    "**/*"
+    "**/*",
+    "src",
+    "db",
   ],
   "exclude": [
     "dist"
@@ -12,6 +14,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@db/*":[
+        "db/*"
       ],
     },
     "jsx": "react-jsx",

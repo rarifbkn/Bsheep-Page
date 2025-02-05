@@ -1,13 +1,14 @@
 import { supabase } from "@/lib/supabase"
 
-export const getImagURL = async (path,expiresIn=3600) => {
-    const { data, error } = await supabase
+export const getImageUrlFromPublicBucket = async (filePath) => {
+  const { data, error } = await supabase
   .storage
-  .listBuckets();
-    if(error) {
-        console.error("Error Obteniendo URL firmada",error.message);
-        return null;
-    }
+  .from('bsheep-bucket')
+  .getPublicUrl(filePath);
 
-    return data.signedUrl;
+  if (error){
+    console.log('Error loading image from bucket', error)
+    return null
+  }
+  return data
 }

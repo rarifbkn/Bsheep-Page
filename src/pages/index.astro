@@ -4,6 +4,10 @@ import Footer from "@/components/Footer.astro";
 import SweatShirts from "@/components/SweatShirts.astro";
 import Tshirts from "@/components/Tshirts.astro";
 import FeaturedClothing from "@/components/FeaturedClothing.astro";
+import { db, Categories } from "astro:db";
+
+const categories = await db.select().from(Categories);
+console.log(categories);
 ---
 
 <Layout>
