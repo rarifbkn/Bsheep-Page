@@ -3,9 +3,6 @@ import Section from "@/components/Section.astro";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { getImageUrlFromPublicBucket } from "@/api/getImagesFromBucket";
-
-// const link = await getImageUrlFromPublicBucket("/black logo bsheep.png");
 ---
 
 <Section>
@@ -14,19 +11,34 @@ import { getImageUrlFromPublicBucket } from "@/api/getImagesFromBucket";
     <!-- Wrapper para las diapositivas -->
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img src="/featured clothing/1.jpg" alt="Slide 1" />
+        <img
+          src="https://mnntrmrwimkrypgfmcww.supabase.co/storage/v1/object/public/bsheep-bucket/ropa%20destacada/duo-polera-blanca.jpg"
+          alt="duo-polera-blanca"
+        />
       </div>
       <div class="swiper-slide">
-        <img src="/featured clothing/2.jpg" alt="Slide 2" />
+        <img
+          src="https://mnntrmrwimkrypgfmcww.supabase.co/storage/v1/object/public/bsheep-bucket/ropa%20destacada/espalda-polera-negra-bsheep.jpg"
+          alt="espalda-polera-negra-bsheep"
+        />
       </div>
       <div class="swiper-slide">
-        <img src="/featured clothing/3.jpg" alt="Slide 3" />
+        <img
+          src="https://mnntrmrwimkrypgfmcww.supabase.co/storage/v1/object/public/bsheep-bucket/ropa%20destacada/polera-negra-bsheep.jpg"
+          alt="polera-negra-bsheep"
+        />
       </div>
       <div class="swiper-slide">
-        <img src="/featured clothing/4.jpg" alt="Slide 4" />
+        <img
+          src="https://mnntrmrwimkrypgfmcww.supabase.co/storage/v1/object/public/bsheep-bucket/ropa%20destacada/trio-polerones-poleras.jpg"
+          alt="trio-polerones-poleras"
+        />
       </div>
       <div class="swiper-slide">
-        <img src="/featured clothing/5.jpg" alt="Slide 5" />
+        <img
+          src="https://mnntrmrwimkrypgfmcww.supabase.co/storage/v1/object/public/bsheep-bucket/ropa%20destacada/zoom-poleron-verde.jpg"
+          alt="zoom-poleron-verde"
+        />
       </div>
     </div>
     <!-- Controles de navegación -->
@@ -46,6 +58,7 @@ import { getImageUrlFromPublicBucket } from "@/api/getImagesFromBucket";
         el: ".swiper-pagination",
         dynamicBullets: true,
       },
+      loop: true,
     });
   </script>
 </Section>

@@ -1,17 +1,29 @@
 ---
 import Section from "@/components/Section.astro";
+import { db, eq, Products, Categories } from "astro:db";
+const sweatshirtList = await db
+  .select()
+  .from(Products)
+  .innerJoin(Categories, eq(Categories.id, Products.category_id))
+  .where(eq(Categories.name, "polerones"));
+
+console.log("🚀 ~ sweatshirtList:", sweatshirtList);
 ---
 
 <Section title="Polerones">
   <div class="swiper sweatshirtSwiper">
     <div class="swiper-wrapper">
       <!--Slides -->
-      <div class="swiper-slide">
-        <img src="/sweatshirt/1.jpg" alt="poleron 1" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/sweatshirt/2.jpg" alt="poleron 1" />
-      </div>
+
+      {
+        sweatshirtList.map(({ Products, Categories }) => {
+          return (
+            <div class="swiper-slide">
+              <img src={Products.image} alt={Products.name} />
+            </div>
+          );
+        })
+      }
     </div>
     <div class="swiper-pagination"></div>
   </div>
