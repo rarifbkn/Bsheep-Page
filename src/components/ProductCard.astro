@@ -1,5 +1,6 @@
 ---
 import type { Product } from "@/types/Product";
+import type { Category } from "@/types/Category";
 import { Image } from "astro:assets";
 
 type Props = {
@@ -7,11 +8,59 @@ type Props = {
 };
 
 const { product } = Astro.props;
+const { name, image} = product;
 ---
 
-<div>
-  <!-- image -->
-  <Image src={product.image} alt={product.name} width={200} height={200} />
-  <!-- button -->
-  <!-- content -->
-</div>
+<!-- <p class="price">
+  {
+    price.toLocaleString("es-CL", {
+      currency: "CLP",
+      style: "currency",
+      minimumFractionDigits: 0,
+    })
+  }
+</p> -->
+<article>
+  <div class="left">
+    <Image src={image} alt={name} inferSize={true} />
+    <h3>{name}</h3>
+  </div>
+</article>
+
+<style>
+  article {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    background-color: white;
+    .left {
+      img {
+        width: 80%;
+        height: auto;
+        background-size: cover;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .price {
+    color: grey;
+    font-size: 30px;
+  }
+
+  button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+</style>

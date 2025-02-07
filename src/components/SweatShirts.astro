@@ -1,25 +1,27 @@
 ---
 import Section from "@/components/Section.astro";
-import { db, eq, Products, Categories } from "astro:db";
-const sweatshirtList = await db
-  .select()
-  .from(Products)
-  .innerJoin(Categories, eq(Categories.id, Products.category_id))
-  .where(eq(Categories.name, "polerones"));
+import ProductCard from "@/components/ProductCard.astro";
+import { getSweatShirtsFromDb } from "@/api/querysFromDb";
+import SkeletonCard from "@/components/SkeletonCard.astro";
 
-console.log("🚀 ~ sweatshirtList:", sweatshirtList);
+const sweatshirtList = await getSweatShirtsFromDb();
 ---
 
 <Section title="Polerones">
   <div class="swiper sweatshirtSwiper">
     <div class="swiper-wrapper">
       <!--Slides -->
-
       {
-        sweatshirtList.map(({ Products, Categories }) => {
+        sweatshirtList.map(({ Products }) => {
           return (
             <div class="swiper-slide">
-              <img src={Products.image} alt={Products.name} />
+              <ProductCard
+                product={{
+                  ...Products,
+                  description: Products.description ?? "",
+                }}
+                server:defer
+              />
             </div>
           );
         })
@@ -37,7 +39,7 @@ console.log("🚀 ~ sweatshirtList:", sweatshirtList);
     modules: [Pagination],
     pagination: {
       el: ".swiper-pagination",
-      dynamicBullets: true,
+      type: "progressbar",
     },
     loop: true,
   });
@@ -46,7 +48,7 @@ console.log("🚀 ~ sweatshirtList:", sweatshirtList);
 <style>
   .swiper {
     width: 100%;
-    height: 200px;
+    height: 100%;
     margin: 0 auto;
   }
 
@@ -56,12 +58,5 @@ console.log("🚀 ~ sweatshirtList:", sweatshirtList);
     justify-content: center;
     font-size: 24px;
     background: #fff;
-  }
-
-  .swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
   }
 </style>

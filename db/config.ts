@@ -18,9 +18,6 @@ const Products = defineTable({
     stock: column.number(),
     image: column.text(),
     category_id: column.number({references:()=>Categories.columns.id}),
-    deleted_at: column.date({optional:true}),
-    updated_at: column.date({optional:true}),
-    created_at: column.date({default: NOW}),
   }
 })
 
