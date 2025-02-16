@@ -2,22 +2,24 @@ import { db, eq, Products, Categories } from "astro:db";
 
 export const getSweatShirtsFromDb = async () => {
   
-const sweatshirtList = await db
+  return await db
   .select()
   .from(Products)
-  .innerJoin(Categories, eq(Categories.id, Products.category_id))
-  .where(eq(Categories.name, "polerones"));
-
-  return sweatshirtList;
+  .where(eq(Products.category_id, 2));
 };
 
 
 export const getTshirtsFromDb = async () => {
-  const tshirtList = await db
+  return await db
   .select()
   .from(Products)
-  .innerJoin(Categories, eq(Categories.id, Products.category_id))
-  .where(eq(Categories.name, "poleras"));
-
-  return tshirtList;
+  .where(eq(Products.category_id, 1));
 };
+
+export const getProductsFromDb = async () => {
+  return await db.select().from(Products);
+}
+
+export const getCategoriesFromDb = async () => {
+  return await db.select().from(Categories);
+}

@@ -1,23 +1,31 @@
 ---
 import CartIcon from "@/icons/CartIcon.astro";
-import MenuIcon from "@/icons/MenuIcon.astro";
 import Hamburger from "@/components/Hamburger.astro";
 ---
 
 <nav>
   <div class="container">
-    <img
-      src="https://mnntrmrwimkrypgfmcww.supabase.co/storage/v1/object/public/bsheep-bucket/logos/black%20logo%20bsheep.png"
-      alt="Bsheep Logo Dark"
-    />
+    <a href="/">
+      <img
+        src="https://mnntrmrwimkrypgfmcww.supabase.co/storage/v1/object/public/bsheep-bucket/logos/black%20logo%20bsheep.png"
+        alt="Bsheep Logo Dark"
+      />
+    </a>
     <div class="icons">
-      <CartIcon />
-      <Hamburger />
+      <button>
+        <CartIcon />
+      </button>
+      <!-- <Hamburger /> -->
     </div>
   </div>
 </nav>
 
 <style>
+  button {
+    border: none;
+    background-color: transparent;
+  }
+
   .container {
     display: flex;
     justify-content: space-between;
@@ -35,6 +43,7 @@ import Hamburger from "@/components/Hamburger.astro";
 
     .icons {
       gap: 10px;
+      margin-right: 20px;
     }
   }
 </style>

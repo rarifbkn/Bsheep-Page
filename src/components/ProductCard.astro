@@ -8,7 +8,7 @@ type Props = {
 };
 
 const { product } = Astro.props;
-const { name, image} = product;
+const { id, name, image } = product;
 ---
 
 <!-- <p class="price">
@@ -21,28 +21,25 @@ const { name, image} = product;
   }
 </p> -->
 <article>
-  <div class="left">
+  <a href=`/cloths/${id}`>
     <Image src={image} alt={name} inferSize={true} />
-    <h3>{name}</h3>
-  </div>
+  </a>
+  <h3>{name}</h3>
 </article>
 
 <style>
   article {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     margin: auto;
     text-align: center;
     align-items: center;
-    display: flex;
     background-color: white;
-    .left {
-      img {
-        width: 80%;
-        height: auto;
-        background-size: cover;
-        border-radius: 8px;
-      }
+
+    img {
+      width: 100%;
+      height: auto;
+      background-size: cover;
+      border-radius: 8px;
     }
   }
 

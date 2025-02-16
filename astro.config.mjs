@@ -1,15 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
-import react from '@astrojs/react';
 
 import db from '@astrojs/db';
 
+import netlify from '@astrojs/netlify';
+
+import preact from '@astrojs/preact';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), db()],
+  site:"https://bsheep.netlify.app/",
+  integrations: [db(), preact()],
   output: 'server',
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: netlify(),
 });

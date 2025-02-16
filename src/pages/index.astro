@@ -1,23 +1,20 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Footer from "@/components/Footer.astro";
-import SweatShirts from "@/components/SweatShirts.astro";
-import Tshirts from "@/components/Tshirts.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import FeaturedClothing from "@/components/FeaturedClothing.astro";
-import { db, Categories } from "astro:db";
+import ProductSwiper from "@/components/ProductSwiper.astro";
+import { getTshirtsFromDb, getSweatShirtsFromDb } from "@/api/querysFromDb";
 
-const categories = await db.select().from(Categories);
-console.log(categories);
+const tshirts = await getTshirtsFromDb();
+const sweatshirts = await getSweatShirtsFromDb();
 ---
 
-<Layout>
+<BaseLayout pageTitle="Home">
   <main>
     <FeaturedClothing />
-    <SweatShirts />
-    <Tshirts />
+    <ProductSwiper products={sweatshirts} titlePage="Polerones" />
+    <ProductSwiper products={tshirts} titlePage="Poleras" />
   </main>
-  <Footer />
-</Layout>
+</BaseLayout>
 
 <style>
   main {

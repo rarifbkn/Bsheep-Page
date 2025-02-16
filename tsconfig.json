@@ -4,7 +4,7 @@
     ".astro/types.d.ts",
     "**/*",
     "src",
-    "db",
+    "db"
   ],
   "exclude": [
     "dist"
@@ -15,11 +15,11 @@
       "@/*": [
         "src/*"
       ],
-      "@db/*":[
+      "@db/*": [
         "db/*"
-      ],
+      ]
     },
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "preact"
   }
 }

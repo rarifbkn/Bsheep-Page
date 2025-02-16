@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+const { product, category } = Astro.props;
+const { name, image, price, description, stock, category_id } = product;
+
+// id: number,
+//     name:string,
+//     price: number,
+//     description?: string,
+//     stock: number,
+//     image: string,
+//     category_id: number,
+---
+
+<main class="product">
+  <!--Product Header -->
+  <div class="product prod-header">
+    <h1>{name}</h1>
+    <p>{description}</p>
+    <!-- <p>{category.name}</p> -->
+    <p class="price">
+      {
+        price.toLocaleString("es-CL", {
+          currency: "CLP",
+          style: "currency",
+          minimumFractionDigits: 0,
+        })
+      }
+    </p>
+  </div>
+  <!--Product Image -->
+  <div class="product prod-img"></div>
+  <Image src={image} alt={name} inferSize />
+  <!--Product Footer -->
+  <div class="product prod-footer"></div>
+</main>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-content: center;
+    padding: 2rem;
+  }
+
+  .prod-header {
+    justify-items: start;
+  }
+
+  .price {
+    font-size: xx-large;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  @media (max-width: 667px) {
+    img {
+      width: auto;
+      max-height: 350px;
+      object-fit: cover;
+    }
+  }
+</style>

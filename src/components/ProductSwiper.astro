@@ -1,29 +1,23 @@
 ---
 import Section from "@/components/Section.astro";
-import { getTshirtsFromDb } from "@/api/querysFromDb";
 import ProductCard from "@/components/ProductCard.astro";
 
-const tshirtList = await getTshirtsFromDb();
+const { products, titlePage } = Astro.props;
 ---
 
-<Section title="Poleras">
-  <div class="swiper tshirtSwiper">
+<Section title={titlePage}>
+  <div class="swiper">
     <div class="swiper-wrapper">
       <!--Slides -->
       {
-        tshirtList.map(({ Products, Categories }) => {
-          return (
-            <div class="swiper-slide">
-              <ProductCard
-                product={{
-                  ...Products,
-                  description: Products.description ?? "",
-                }}
-                server:defer
-              />
-            </div>
-          );
-        })
+        Array.isArray(products) &&
+          products.map((product) => {
+            return (
+              <div class="swiper-slide">
+                <ProductCard product={product} />
+              </div>
+            );
+          })
       }
     </div>
     <div class="swiper-pagination"></div>
@@ -31,10 +25,11 @@ const tshirtList = await getTshirtsFromDb();
 </Section>
 <!-- Script para inicializar Swiper -->
 <script>
+  import "swiper/css";
   import Swiper from "swiper";
   import { Pagination } from "swiper/modules";
 
-  new Swiper(".tshirtSwiper", {
+  new Swiper(".swiper", {
     modules: [Pagination],
     pagination: {
       el: ".swiper-pagination",

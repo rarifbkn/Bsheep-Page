@@ -1,6 +1,9 @@
 ---
+import Footer from "@/components/Footer.astro";
 import Navbar from "@/components/Navbar.astro";
 import '@/styles/main.css';
+
+const {pageTitle} = Astro.props
 ---
 
 <!doctype html>
@@ -10,11 +13,12 @@ import '@/styles/main.css';
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="https://mnntrmrwimkrypgfmcww.supabase.co/storage/v1/object/public/bsheep-bucket/logos/white%20logo%20bsheep.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>Bsheep Page</title>
+    <title>{pageTitle}</title>
   </head>
   <body>
     <Navbar />
     <slot />
+    <Footer/>
   </body>
 </html>
 

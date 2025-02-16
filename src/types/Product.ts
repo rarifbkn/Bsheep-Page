@@ -1,4 +1,4 @@
-import type { Categories } from "./Category"
+import type { Category } from "./Category"
 
 export type  Product = {
     id: number,
