@@ -1,0 +1,45 @@
+---
+// Importamos el icono
+import ShareIcon from "@/icons/ShareIcon.astro";
+import WhatsappIcon from "@/icons/WhatsappIcon.astro";
+import InstaIcon from "@/icons/InstaIcon.astro";
+
+const instaLink = "https://www.instagram.com/bsheep.cl";
+const whatsappLink = "https://wa.me/56948778823";
+const size = "32";
+---
+
+<div class="social">
+  <!-- <span>{copied ? "¡Copiado!" : "Compartir"}</span> -->
+  <a href={whatsappLink} target="_blank"><WhatsappIcon size={size} /></a>
+  <a href={instaLink} target="_blank"><InstaIcon size={size} /></a>
+  <button class="share-btn"><ShareIcon size={size} /></button>
+</div>
+<script>
+  const shareButton = document.querySelectorAll("button.share-btn");
+
+  shareButton.forEach((button) => {
+    button.addEventListener("click", () => {
+      const link = window.location.href;
+      navigator.clipboard.writeText(link).then(() => {
+        alert(`Copiado en el portapapeles:${link}`);
+      });
+    });
+  });
+</script>
+<style>
+  .social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .share-btn {
+    border: none;
+    background: transparent;
+  }
+  a {
+    color: black;
+  }
+</style>

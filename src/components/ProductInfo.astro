@@ -1,5 +1,8 @@
 ---
 import { Image } from "astro:assets";
+import SizeButtons from "@/components/SizeButtons";
+import SocialComponent from "./SocialComponent.astro";
+import ShopButton from "@/components/ShopButton.astro";
 const { product, category } = Astro.props;
 const { name, image, price, description, stock, category_id } = product;
 
@@ -32,7 +35,13 @@ const { name, image, price, description, stock, category_id } = product;
   <div class="product prod-img"></div>
   <Image src={image} alt={name} inferSize />
   <!--Product Footer -->
-  <div class="product prod-footer"></div>
+  <div class="product prod-footer">
+    <SizeButtons />
+    <div class="prod-bottom-footer">
+      <ShopButton />
+      <SocialComponent />
+    </div>
+  </div>
 </main>
 
 <style>
@@ -50,6 +59,19 @@ const { name, image, price, description, stock, category_id } = product;
 
   .price {
     font-size: xx-large;
+  }
+
+  .prod-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    .prod-bottom-footer {
+      display: flex;
+      gap: 1rem;
+    }
   }
 
   img {

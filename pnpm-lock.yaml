@@ -20,6 +20,9 @@ importers:
       '@astrojs/preact':
         specifier: ^4.0.4
         version: 4.0.4(@babel/core@7.26.7)(@types/node@22.12.0)(preact@10.25.4)(tsx@4.19.2)
+      '@nanostores/preact':
+        specifier: ^0.5.2
+        version: 0.5.2(nanostores@0.11.4)(preact@10.25.4)
       '@supabase/supabase-js':
         specifier: ^2.48.1
         version: 2.48.1
@@ -35,6 +38,9 @@ importers:
       kleur:
         specifier: ^4.1.5
         version: 4.1.5
+      nanostores:
+        specifier: ^0.11.4
+        version: 0.11.4
       preact:
         specifier: ^10.25.4
         version: 10.25.4
@@ -668,6 +674,13 @@ packages:
     resolution: {integrity: sha512-llMXd39jtP0HpQLVI37Bf1m2ADlEb35GYSh1SDSLsBhR+5iCxiNGlT31yqbNtVHygHAtMy6dWFERpU2JgufhPg==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@nanostores/preact@0.5.2':
+    resolution: {integrity: sha512-DZ5G0UuHTJ8NNS8I3Jd6f4RCcWIl4siYD+vaV6jQf0T6xJ3QqTSkJkYNQTZK7O+7NC/mzaLkomyLQqD+w1E0Tg==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    peerDependencies:
+      nanostores: ^0.9.0 || ^0.10.0 || ^0.11.0
+      preact: '>=10.0.0'
 
   '@neon-rs/load@0.0.4':
     resolution: {integrity: sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw==}
@@ -1852,6 +1865,10 @@ packages:
     resolution: {integrity: sha512-Aooyr6MXU6HpvvWXKoVoXwKMs/KyVakWwg7xQfv5/S/RIgJMy0Ifa45H9qqYy7pTCszrHzP21Uk4PZq2HpEM8Q==}
     engines: {node: ^18 || >=20}
     hasBin: true
+
+  nanostores@0.11.4:
+    resolution: {integrity: sha512-k1oiVNN4hDK8NcNERSZLQiMfRzEGtfnvZvdBvey3SQbgn8Dcrk0h1I6vpxApjb10PFUflZrgJ2WEZyJQ+5v7YQ==}
+    engines: {node: ^18.0.0 || >=20.0.0}
 
   neotraverse@0.6.18:
     resolution: {integrity: sha512-Z4SmBUweYa09+o6pG+eASabEpP6QkQ70yHj351pQoEXIs8uHbaU2DWVmzBANKgflPa47A50PtB2+NgRpQvr7vA==}
@@ -3164,6 +3181,11 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - supports-color
+
+  '@nanostores/preact@0.5.2(nanostores@0.11.4)(preact@10.25.4)':
+    dependencies:
+      nanostores: 0.11.4
+      preact: 10.25.4
 
   '@neon-rs/load@0.0.4': {}
 
@@ -4582,6 +4604,8 @@ snapshots:
   nanoid@3.3.8: {}
 
   nanoid@5.0.9: {}
+
+  nanostores@0.11.4: {}
 
   neotraverse@0.6.18: {}
 
