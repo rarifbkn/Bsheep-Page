@@ -13,4 +13,9 @@ export default defineConfig({
   integrations: [db(), preact()],
   output: 'server',
   adapter: netlify(),
+  db: {
+    driver: "libsql",
+    url: import.meta.env.ASTRO_DB_REMOTE_URL,
+    authToken: import.meta.env.ASTRO_DB_REMOTE_URL,
+  }
 });
