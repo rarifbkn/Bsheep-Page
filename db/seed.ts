@@ -30,7 +30,7 @@ export default async function seed() {
 	  {
 		"name": "Polera Café",
 		"category_id": categories.find(c => c.name === "poleras")?.id || 1,
-		"image":"https://mnntrmrwimkrypgfmcww.supabase.co/storage/v1/object/public/bsheep-bucket/poleras/polera%20cafe%20simple.jpg",
+		"image":"https://mnntrmrwimkrypgfmcww.supabase.co/storage/v1/object/public/bsheep-bucket/poleras/polera%20cafe%20oversize.jpg",
 		"price": 11990,
 		"description": "Polera de un solo color, cuello redondo.",
 		"stock": 10
