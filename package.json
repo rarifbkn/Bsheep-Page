@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro dev --remote",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -13,6 +13,7 @@
     "@astrojs/netlify": "^6.1.0",
     "@astrojs/node": "^9.0.2",
     "@astrojs/preact": "^4.0.4",
+    "@libsql/client": "^0.14.0",
     "@nanostores/preact": "^0.5.2",
     "@supabase/supabase-js": "^2.48.1",
     "@types/react": "^19.0.8",
