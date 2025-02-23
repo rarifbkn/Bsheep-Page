@@ -11,8 +11,8 @@ const sweatshirts = await getSweatShirtsFromDb();
 <BaseLayout pageTitle="Home">
   <main>
     <FeaturedClothing />
-    <ProductSwiper products={sweatshirts} titlePage="Polerones" server:defer />
-    <ProductSwiper products={tshirts} titlePage="Poleras" server:defer />
+    <ProductSwiper products={sweatshirts} titlePage="Polerones" />
+    <ProductSwiper products={tshirts} titlePage="Poleras" />
   </main>
 </BaseLayout>
 
