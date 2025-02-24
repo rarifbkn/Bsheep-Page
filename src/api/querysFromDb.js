@@ -1,5 +1,4 @@
 import { db, eq, Products, Categories } from "astro:db";
-import { asDrizzleTable } from '@astrojs/db/utils';
 
 export const getSweatShirtsFromDb = async () => {  
   const categories = await db
@@ -26,9 +25,21 @@ export const getTshirtsFromDb = async () => {
 };
 
 export const getProductsFromDb = async () => {
-  return await db.select().from(Products);
+  try{
+    const {data,error} =  await db.select().from(Products);
+    if (error) throw error;
+    return data;
+  }catch(e){
+    console.log(e);
+  }
 }
 
 export const getCategoriesFromDb = async () => {
-  return await db.select().from(Categories);
+  try{
+    const {data,error} =  await db.select().from(Categories);
+    if (error) throw error;
+    return data;
+  }catch(e){
+    console.log(e);
+  }
 }

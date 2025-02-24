@@ -1,7 +1,6 @@
 # example netlify.toml
 [build]
   command = "pnpm build"
-  functions = "netlify/functions"
   publish = "dist"
 
 #commands for deploy project PROD-MOOD: pnpm astro build --remote 
@@ -9,9 +8,11 @@
 [build.environment]
   SUPABASE_URL="https://mnntrmrwimkrypgfmcww.supabase.co"
   SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ubnRybXJ3aW1rcnlwZ2ZtY3d3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgzMDM2NTAsImV4cCI6MjA1Mzg3OTY1MH0.0NMBZt1hlvFvo_9ZTFMxHk4YYNC_80sXHDkT3Msaqjk"
+  # TURSO_DB_URL ="libsql://bsheep-rarifbkn.turso.io"
+  # TURSO_DB_AUTH_TOKEN ="eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDAyNjEzNTEsImlkIjoiNmI4YjhiMWItMjNmMS00YjdmLWIzZmQtNzQyYzcwMGM1M2VkIn0.gc-LVyTguxjXcutpL4X5TM6xyvxhqr3mZ117_OlfL2vNXIKi3X--R1g5nAmNU2QCtFgsfAAxhm4FoIuvNfCSBQ"
   ASTRO_DB_REMOTE_URL="libsql://bsheep-rarifbkn.turso.io"
   ASTRO_DB_APP_TOKEN="eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDAyNjEzNTEsImlkIjoiNmI4YjhiMWItMjNmMS00YjdmLWIzZmQtNzQyYzcwMGM1M2VkIn0.gc-LVyTguxjXcutpL4X5TM6xyvxhqr3mZ117_OlfL2vNXIKi3X--R1g5nAmNU2QCtFgsfAAxhm4FoIuvNfCSBQ"
-
+  
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
