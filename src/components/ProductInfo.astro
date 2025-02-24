@@ -1,18 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import SizeButtons from "@/components/SizeButtons";
+import SizeButtons from "@/components/SizeButtons.jsx";
 import SocialComponent from "./SocialComponent.astro";
 import ShopButton from "@/components/ShopButton.astro";
-const { product, category } = Astro.props;
-const { name, image, price, description, stock, category_id } = product;
 
-// id: number,
-//     name:string,
-//     price: number,
-//     description?: string,
-//     stock: number,
-//     image: string,
-//     category_id: number,
+const { product, category } = Astro.props;
+const { id, name, image, price, description, stock, category_id } = product;
+
 ---
 
 <main class="product">
@@ -20,7 +14,6 @@ const { name, image, price, description, stock, category_id } = product;
   <div class="product prod-header">
     <h1>{name}</h1>
     <p>{description}</p>
-    <!-- <p>{category.name}</p> -->
     <p class="price">
       {
         price.toLocaleString("es-CL", {
@@ -36,7 +29,7 @@ const { name, image, price, description, stock, category_id } = product;
   <Image src={image} alt={name} inferSize={true} />
   <!--Product Footer -->
   <div class="product prod-footer">
-    <SizeButtons />
+    <SizeButtons client:load />
     <div class="prod-bottom-footer">
       <ShopButton />
       <SocialComponent />

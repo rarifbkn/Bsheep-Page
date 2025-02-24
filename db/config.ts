@@ -2,14 +2,14 @@ import { defineDb,defineTable,column, NOW } from 'astro:db';
 
 // https://astro.build/db/config
 
-const Categories = defineTable({
+export const Categories = defineTable({
   columns: {
     id: column.number({primaryKey:true}),
     name: column.text({unique:true}),
   }
 })
 
-const Products = defineTable({
+export const Products = defineTable({
   columns: {
     id: column.number({primaryKey:true}),
     name:column.text({unique:true}),
@@ -21,7 +21,7 @@ const Products = defineTable({
   }
 })
 
-const Orders = defineTable({
+export const Orders = defineTable({
   columns: {
     id: column.number({primaryKey:true}),
     product_id: column.number({references:()=>Products.columns.id}),
@@ -32,7 +32,7 @@ const Orders = defineTable({
   }
 })
 
-const Payments = defineTable({
+export const Payments = defineTable({
   columns: {
     id: column.number({primaryKey:true}),
     order_id: column.number({references:()=>Orders.columns.id}),

@@ -1,3 +1,6 @@
 import {atom} from "nanostores"
 
-export const isSizeSelected = atom(false);
+export const sizeSelected = atom({
+    size:'',
+    isSelected: false,
+});

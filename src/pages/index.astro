@@ -5,7 +5,9 @@ import ProductSwiper from "@/components/ProductSwiper.astro";
 import { getTshirtsFromDb, getSweatShirtsFromDb } from "@/api/querysFromDb";
 
 const tshirts = await getTshirtsFromDb();
+console.log("🚀 ~ tshirts:", tshirts)
 const sweatshirts = await getSweatShirtsFromDb();
+console.log("🚀 ~ sweatshirts:", sweatshirts)
 ---
 
 <BaseLayout pageTitle="Home">

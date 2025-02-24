@@ -1,8 +1,16 @@
-import { db,Categories, Products } from 'astro:db';
+import { db } from 'astro:db';
+import { asDrizzleTable } from '@astrojs/db/utils';
+import { Products,Categories } from './config';
 
 // https://astro.build/db/seed
 export default async function seed() {
-	const categories = await db.insert(Categories).values(
+
+	console.log("-- Insertando categorias y productos --");
+
+	const typeSafeCategories = asDrizzleTable('categories',Categories);
+	const typeSafeProducts = asDrizzleTable('products',Products);
+
+	const categories = await db.insert(typeSafeCategories).values(
 		[
 			{name:'poleras'},
 			{name:'polerones'},
@@ -10,7 +18,7 @@ export default async function seed() {
 		]
 	).returning();
 	
-	await db.insert(Products).values([
+	await db.insert(typeSafeProducts).values([
 		{
 			"name": "Polera Blanca",
 			"category_id": categories.find(c => c.name === "poleras")?.id || 1,

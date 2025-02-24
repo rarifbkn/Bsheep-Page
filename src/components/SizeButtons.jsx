@@ -1,11 +1,19 @@
 import '@/styles/SizeSelector.css'
+import { useStore } from '@nanostores/preact';
+import { sizeSelected } from '@/Store/sizeStore';
 
 export default function SizeButtons() {
+
+
+    const $isSizeSelected = useStore(sizeSelected);
     const sizes = ["S", "M", "L", "XL"];
 
     const handleClick = (size) => {
-        console.log(`Has seleccionado la talla ${size}`)
-        alert(`Has seleccionado la talla ${size}`);
+        sizeSelected.set({
+            size: size,
+            isSelected: true,
+        })
+        console.log(`Has seleccionado la talla ${size}`);
     }
 
     return(
@@ -15,7 +23,8 @@ export default function SizeButtons() {
                     <button
                         key={size}
                         id={size}
-                        onClick={() => handleClick(size)}
+                        onClick= {() =>handleClick(size)}
+                        class={$isSizeSelected.size === size ? "selected":""}
                     >
                         <span>
                             {size}
