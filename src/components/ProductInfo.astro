@@ -2,11 +2,10 @@
 import { Image } from "astro:assets";
 import SizeButtons from "@/components/SizeButtons.jsx";
 import SocialComponent from "./SocialComponent.astro";
-import ShopButton from "@/components/ShopButton.astro";
+import ShopButtonClient from "@/components/ShopButtonClient.jsx";
 
 const { product, category } = Astro.props;
 const { id, name, image, price, description, stock, category_id } = product;
-
 ---
 
 <main class="product">
@@ -31,7 +30,7 @@ const { id, name, image, price, description, stock, category_id } = product;
   <div class="product prod-footer">
     <SizeButtons client:load />
     <div class="prod-bottom-footer">
-      <ShopButton />
+      <ShopButtonClient client:load />
       <SocialComponent />
     </div>
   </div>

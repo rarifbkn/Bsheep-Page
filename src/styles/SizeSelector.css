@@ -25,9 +25,3 @@ button {
     cursor: pointer;
     transition: all 0.3s;
 }
-
-button:hover {
-    border-color: #fef445;
-    color: #fef445;
-    background-color: #000;
-}

@@ -1,19 +1,28 @@
 import { db, eq, Products, Categories } from "astro:db";
+import { asDrizzleTable } from '@astrojs/db/utils';
 
-export const getSweatShirtsFromDb = async () => {
+export const getSweatShirtsFromDb = async () => {  
+  const categories = await db
+  .select()
+  .from(Categories)
+  .where(eq(Categories.name,"polerones"))
   
   return await db
   .select()
   .from(Products)
-  .where(eq(Products.category_id, 2));
+  .where(eq(Products.category_id, categories[0].id));
 };
 
-
 export const getTshirtsFromDb = async () => {
+  const categories = await db
+  .select()
+  .from(Categories)
+  .where(eq(Categories.name,"poleras"))
+
   return await db
   .select()
   .from(Products)
-  .where(eq(Products.category_id, 1));
+  .where(eq(Products.category_id, categories[0].id));
 };
 
 export const getProductsFromDb = async () => {
