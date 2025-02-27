@@ -1,20 +1,26 @@
 ---
+import type { GetStaticPaths } from "astro";
 import { getProductsFromDb, getCategoriesFromDb } from "@/api/querysFromDb";
 import ProductInfo from "@/components/ProductInfo.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import type { Product } from "@/types/Product";
+import type { Category } from "@/types/Category";
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const products = await getProductsFromDb();
   const categories = await getCategoriesFromDb();
+  const products = await getProductsFromDb();
 
-  return products.map((product) => {
-    const category = categories.find(
-      (category) => product.category_id === category.id
+  return products?.map((product) => {
+    const category = categories?.find(
+      (category: Category) => category.id === product.category_id
     );
     return {
-      params: { id: product.id },
+      params: {
+        category: category?.name,
+        id: product.id,
+      },
       props: { product, category },
     };
   });

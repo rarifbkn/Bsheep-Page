@@ -5,9 +5,10 @@ import { Image } from "astro:assets";
 
 type Props = {
   product: Product;
+  categoryName: Category["name"];
 };
 
-const { product } = Astro.props;
+const { product, categoryName } = Astro.props;
 const { id, name, image } = product;
 ---
 
@@ -21,7 +22,7 @@ const { id, name, image } = product;
   }
 </p> -->
 <article>
-  <a href=`/cloths/${id}`>
+  <a href=`/products/${categoryName}/${id}`>
     <Image src={image} alt={name} inferSize={true} />
   </a>
   <h3>{name}</h3>

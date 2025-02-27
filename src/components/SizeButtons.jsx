@@ -9,11 +9,21 @@ export default function SizeButtons() {
     const sizes = ["S", "M", "L", "XL"];
 
     const handleClick = (size) => {
-        sizeSelected.set({
-            size: size,
-            isSelected: true,
-        })
-        console.log(`Has seleccionado la talla ${size}`);
+
+        //if is the same size, unset and unselect it.
+        if($isSizeSelected.size === size){
+            sizeSelected.set({
+                size: "",
+                isSelected: false,
+            })
+        }else{
+            //set the size chosen
+            sizeSelected.set({
+                size: size,
+                isSelected: true,
+            })
+            console.log(`Has seleccionado la talla ${size}`);
+        }
     }
 
     return(

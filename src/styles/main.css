@@ -30,6 +30,16 @@ cursor: not-allowed;
     color: #fff;
 }
 
-button:hover {
+.selected {
     border-color: #fef445;
+}
+
+.prod-header {
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+
+    .price {
+        margin-bottom: 0.5rem;
+    }
 }

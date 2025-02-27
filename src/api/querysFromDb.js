@@ -1,4 +1,4 @@
-import { db, eq, Products, Categories } from "astro:db";
+import { db, eq, Products, Categories,isDbError } from "astro:db";
 
 export const getSweatShirtsFromDb = async () => {  
   const categories = await db
@@ -26,9 +26,10 @@ export const getTshirtsFromDb = async () => {
 
 export const getProductsFromDb = async () => {
   try{
-    const {data,error} =  await db.select().from(Products);
-    if (error) throw error;
-    return data;
+    return  await db
+    .select()
+    .from(Products);
+
   }catch(e){
     console.log(e);
   }
@@ -36,10 +37,19 @@ export const getProductsFromDb = async () => {
 
 export const getCategoriesFromDb = async () => {
   try{
-    const {data,error} =  await db.select().from(Categories);
-    if (error) throw error;
-    return data;
+    return await db
+    .select().
+    from(Categories);
   }catch(e){
     console.log(e);
   }
+}
+export const getCategoryName= async (id) => {
+  const result = await db
+  .select()
+  .from(Categories)
+  .where(eq(Categories.id,id));
+
+  return result[0].name;
+    
 }
