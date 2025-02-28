@@ -12,7 +12,6 @@ const productsWithCategories = await Promise.all(
     return { ...product, categoryName };
   })
 );
-console.log("🚀 ~ productsWithCategories:", productsWithCategories);
 ---
 
 <Section title={titlePage}>
@@ -26,6 +25,7 @@ console.log("🚀 ~ productsWithCategories:", productsWithCategories);
               <ProductCard
                 product={product}
                 categoryName={product.categoryName}
+                server:defer
               />
             </div>
           ))

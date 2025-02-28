@@ -3,16 +3,15 @@ import type { GetStaticPaths } from "astro";
 import { getProductsFromDb, getCategoriesFromDb } from "@/api/querysFromDb";
 import ProductInfo from "@/components/ProductInfo.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import type { Product } from "@/types/Product";
 import type { Category } from "@/types/Category";
 
 export const prerender = true;
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async () => {
   const categories = await getCategoriesFromDb();
   const products = await getProductsFromDb();
 
-  return products?.map((product) => {
+  return products!.map((product) => {
     const category = categories?.find(
       (category: Category) => category.id === product.category_id
     );
@@ -24,7 +23,7 @@ export async function getStaticPaths() {
       props: { product, category },
     };
   });
-}
+}) satisfies GetStaticPaths;
 
 const { product, category } = Astro.props;
 ---

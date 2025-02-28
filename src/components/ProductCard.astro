@@ -12,15 +12,6 @@ const { product, categoryName } = Astro.props;
 const { id, name, image } = product;
 ---
 
-<!-- <p class="price">
-  {
-    price.toLocaleString("es-CL", {
-      currency: "CLP",
-      style: "currency",
-      minimumFractionDigits: 0,
-    })
-  }
-</p> -->
 <article>
   <a href=`/products/${categoryName}/${id}`>
     <Image src={image} alt={name} inferSize={true} />
