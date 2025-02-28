@@ -9,47 +9,56 @@ type Props = {
 };
 
 const { product, categoryName } = Astro.props;
-const { id, name, image } = product;
+const { id, name, image, price } = product;
 ---
 
-<article>
+<div class="product-card">
   <a href=`/products/${categoryName}/${id}`>
-    <Image src={image} alt={name} inferSize={true} />
+    <Image class="product-image" src={image} alt={name} inferSize={true} />
   </a>
-  <h3>{name}</h3>
-</article>
+  <h3 class="product-name">{name}</h3>
+  <p class="product-price">
+    {
+      price.toLocaleString("es-CL", {
+        currency: "CLP",
+        style: "currency",
+        minimumFractionDigits: 0,
+      })
+    }
+  </p>
+</div>
 
 <style>
-  article {
-    max-width: 300px;
-    margin: auto;
+  .product-card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    align-items: center;
-    background-color: white;
-
-    img {
-      width: 100%;
-      height: auto;
-      background-size: cover;
-      border-radius: 8px;
-    }
+    transition: transform 0.2s ease-in-out;
   }
 
-  .price {
-    color: grey;
-    font-size: 30px;
+  .product-card:hover {
+    transform: scale(1.05);
   }
 
-  button {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
+  .product-image {
     width: 100%;
-    font-size: 18px;
-    margin-bottom: 0px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
   }
+
+  .product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 12px 0 6px;
+  }
+
+  .product-price {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
 </style>

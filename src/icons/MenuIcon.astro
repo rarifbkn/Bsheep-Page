@@ -1,12 +1,20 @@
+---
+let { size } = Astro.props;
+
+if (!size) {
+  size = 24;
+}
+---
+
 <svg
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
-  fill="none"
+  fill="currentColor"
   stroke="currentColor"
   stroke-linecap="round"
   stroke-linejoin="round"
-  width="24"
-  height="24"
+  width={size}
+  height={size}
   stroke-width="2"
 >
   <path d="M4 6l16 0"></path>

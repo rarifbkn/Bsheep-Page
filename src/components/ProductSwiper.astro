@@ -31,6 +31,9 @@ const productsWithCategories = await Promise.all(
           ))
       }
     </div>
+    <!-- Botones de navegación -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
     <div class="swiper-pagination"></div>
   </div>
 </Section>
@@ -38,30 +41,67 @@ const productsWithCategories = await Promise.all(
 <script>
   import "swiper/css";
   import Swiper from "swiper";
-  import { Pagination } from "swiper/modules";
+  import { Pagination, Navigation } from "swiper/modules";
 
   new Swiper(".swiper", {
-    modules: [Pagination],
+    modules: [Pagination, Navigation],
     pagination: {
       el: ".swiper-pagination",
-      type: "progressbar",
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
     loop: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    breakpoints: {
+      640: { slidesPerView: 2, spaceBetween: 20 },
+      1024: { slidesPerView: 3, spaceBetween: 30 },
+    },
   });
 </script>
 
 <style>
   .swiper {
     width: 100%;
-    height: 100%;
-    margin: 0 auto;
+    padding: 20px 0;
+    position: relative;
+  }
+
+  .swiper-wrapper {
+    display: flex;
+    align-items: center;
   }
 
   .swiper-slide {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    background: #fff;
+    padding: 10px;
   }
+
+  /* Pagination */
+  .swiper-pagination {
+    position: relative;
+    bottom: -10px;
+  }
+
+  .swiper-pagination-bullet {
+    background: black;
+    opacity: 0.6;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: black;
+    opacity: 1;
+  }
+
+  /* Botones de navegación */
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: black;
+    font-size: 20px;
+  },
+
 </style>

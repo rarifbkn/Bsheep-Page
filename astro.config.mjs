@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig, envField } from 'astro/config';
 
-
 import preact from '@astrojs/preact';
 
 import db from "@astrojs/db";

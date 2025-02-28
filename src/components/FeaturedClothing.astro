@@ -3,12 +3,11 @@ import Section from "@/components/Section.astro";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import SkeletonCard from "@/components/SkeletonCard.astro";
 ---
 
 <Section>
   <!--Swiper -->
-  <div class="swiper featuredClothingSwiper">
+  <div class="swiper">
     <!-- Wrapper para las diapositivas -->
     <div class="swiper-wrapper">
       <div class="swiper-slide">
@@ -41,13 +40,7 @@ import SkeletonCard from "@/components/SkeletonCard.astro";
           alt="zoom-poleron-verde"
         />
       </div>
-      <SkeletonCard />
     </div>
-    <!-- Controles de navegación -->
-    <!-- <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div> -->
-
-    <!-- Paginación -->
     <div class="swiper-pagination"></div>
   </div>
   <script>
@@ -58,44 +51,47 @@ import SkeletonCard from "@/components/SkeletonCard.astro";
       modules: [Pagination],
       pagination: {
         el: ".swiper-pagination",
-        type: "progressbar",
       },
       loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      breakpoints: {
+        640: { slidesPerView: 2, spaceBetween: 20 },
+        1024: { slidesPerView: 3, spaceBetween: 30 },
+      },
     });
   </script>
 </Section>
 
 <style>
-  /* .skeleton-card {
+  img {
     width: 100%;
-    height: 100%;
-    background-color: gray;
-  } */
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
 
   .swiper {
     width: 100%;
-    height: 200px;
-    margin: 0 auto;
+    padding: 20px 0;
+    position: relative;
+  }
+
+  .swiper-wrapper {
+    display: flex;
+    align-items: center;
   }
 
   .swiper-slide {
     display: flex;
-    align-items: center;
     justify-content: center;
-    background: #f0f0f0;
-    border-radius: 8px;
-    overflow: hidden;
+    align-items: center;
+    padding: 10px;
   }
 
-  .swiper-button-prev,
-  .swiper-button-next {
-    color: #000;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  /* Paginación */
+  .swiper-pagination {
+    position: relative;
+    bottom: -10px;
   }
 </style>
