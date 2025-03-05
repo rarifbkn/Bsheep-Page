@@ -11,29 +11,24 @@ import MapIcon from "@/icons/MapsIcon.astro";
       />
     </div>
     <div class="footer-links">
-      <div class="footer-section">
+      <section class="footer-section">
         <h2>Acerca de</h2>
         <ul>
-          <li><a href="#">Envíos</a></li>
-          <li><a href="#">Diseños</a></li>
+          <li><a href="/delivery">Envíos</a></li>
+          <li><a href="/diseños">Diseños</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h2>Legal</h2>
-        <ul>
-          <li><a href="#">Políticas de privacidad</a></li>
-          <li><a href="#">Términos y condiciones</a></li>
-        </ul>
-      </div>
+      </section>
     </div>
     <span class="footer-divider"></span>
     <div class="footer-bottom">
-      <p class="footer-location"><MapIcon /><span>Coquimbo</span>, Chile</p>
+      <p class="footer-location"><MapIcon /> <span>Coquimbo</span>, Chile</p>
       © 2024 BSheep™. Todos los derechos son reservados.
     </div>
   </div>
 </footer>
-
+<!-- --font-size-sm: 14px;
+--font-size-md: 16px;
+--font-size-lg: 18px; -->
 <style>
   .footer-container {
     display: flex;
@@ -85,6 +80,14 @@ import MapIcon from "@/icons/MapsIcon.astro";
     width: 100%;
     height: 1.5px;
     background-color: #808080;
+  }
+
+  .footer-bottom {
+    letter-spacing: 1px;
+    padding: 0 1rem;
+    p {
+      line-height: 2.5rem;
+    }
   }
 
   .footer-location span {

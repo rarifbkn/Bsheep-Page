@@ -5,11 +5,11 @@ import SocialComponent from "./SocialComponent.astro";
 import ShopButtonClient from "@/components/ShopButtonClient.jsx";
 
 const { product, category } = Astro.props;
-const { id, name, image, price, description, stock, category_id } = product;
+const { id, name, image, price, description, stock, category_id,sizes } = product;
 
 ---
 
-<main class="product">
+<section class="product">
   <!--Product Header -->
   <div class="product prod-header">
     <h1>{name}</h1>
@@ -29,16 +29,16 @@ const { id, name, image, price, description, stock, category_id } = product;
   <Image src={image} alt={name} inferSize={true} />
   <!--Product Footer -->
   <div class="product prod-footer">
-    <SizeButtons client:load />
+    <SizeButtons sizes={sizes} client:load />
     <div class="prod-bottom-footer">
       <ShopButtonClient client:load />
       <SocialComponent />
     </div>
   </div>
-</main>
+</section>
 
 <style>
-  main {
+  section {
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -63,7 +63,7 @@ const { id, name, image, price, description, stock, category_id } = product;
 
     .prod-bottom-footer {
       display: flex;
-      gap: 1rem;
+      gap: 2.5rem;
     }
   }
 

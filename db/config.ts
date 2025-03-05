@@ -17,6 +17,7 @@ export const Products = defineTable({
     description: column.text({optional:true}),
     stock: column.number(),
     image: column.text(),
+    sizes: column.json(),
     category_id: column.number({references:()=>Categories.columns.id}),
   }
 })

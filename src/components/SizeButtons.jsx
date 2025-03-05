@@ -2,11 +2,8 @@ import '@/styles/SizeSelector.css'
 import { useStore } from '@nanostores/preact';
 import { sizeSelected } from '@/Store/sizeStore';
 
-export default function SizeButtons() {
-
-
+export default function SizeButtons({sizes}) {
     const $isSizeSelected = useStore(sizeSelected);
-    const sizes = ["S", "M", "L", "XL"];
 
     const handleClick = (size) => {
 
@@ -29,12 +26,13 @@ export default function SizeButtons() {
     return(
         <div class="size-selector">
             {
-                sizes.map((size) => (
+             Array.isArray(sizes) &&
+               sizes.map((size) => (
                     <button
                         key={size}
                         id={size}
                         onClick= {() =>handleClick(size)}
-                        class={$isSizeSelected.size === size ? "selected":""}
+                        class={`size-btn ${$isSizeSelected.size === size ? "selected":""}`}
                     >
                         <span>
                             {size}
