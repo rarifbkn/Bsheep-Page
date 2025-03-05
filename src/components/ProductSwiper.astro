@@ -4,6 +4,7 @@ import ProductCard from "@/components/ProductCard.astro";
 import { getCategoryName } from "@/api/querysFromDb";
 import type { Product } from "@/types/Product";
 
+
 const { products, titlePage } = Astro.props;
 
 const productsWithCategories = await Promise.all(
@@ -15,7 +16,7 @@ const productsWithCategories = await Promise.all(
 ---
 
 <Section title={titlePage}>
-  <div class="swiper">
+  <div class="swiper productSwiper">
     <div class="swiper-wrapper">
       <!--Slides -->
       {
@@ -32,19 +33,23 @@ const productsWithCategories = await Promise.all(
       }
     </div>
     <!-- Botones de navegación -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
     <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </div>
 </Section>
 <!-- Script para inicializar Swiper -->
 <script>
-  import "swiper/css";
+  
   import Swiper from "swiper";
-  import { Pagination, Navigation } from "swiper/modules";
+  import { Navigation, Pagination } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
 
-  new Swiper(".swiper", {
+  new Swiper(".productSwiper", {
     modules: [Pagination, Navigation],
+    cssMode: true,
     pagination: {
       el: ".swiper-pagination",
     },
@@ -57,7 +62,7 @@ const productsWithCategories = await Promise.all(
     spaceBetween: 20,
     breakpoints: {
       640: { slidesPerView: 2, spaceBetween: 20 },
-      1024: { slidesPerView: 3, spaceBetween: 30 },
+      1024: { slidesPerView: 2, spaceBetween: 30 },
     },
   });
 </script>

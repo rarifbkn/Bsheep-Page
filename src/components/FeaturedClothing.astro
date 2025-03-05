@@ -1,14 +1,10 @@
 ---
 import Section from "@/components/Section.astro";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 ---
 
 <Section>
   <!--Swiper -->
-  <div class="swiper">
-    <!-- Wrapper para las diapositivas -->
+  <div class="swiper mySwiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <img
@@ -41,14 +37,25 @@ import "swiper/css/pagination";
         />
       </div>
     </div>
+    <!-- Botones de navegación -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
     <div class="swiper-pagination"></div>
   </div>
   <script>
-    import Swiper from "swiper";
-    import { Pagination } from "swiper/modules";
+    import "swiper/css";
+    import "swiper/css/pagination";
 
-    new Swiper(".featuredClothingSwiper", {
-      modules: [Pagination],
+    import Swiper from "swiper";
+    import { Navigation, Pagination } from "swiper/modules";
+
+    var swiper = new Swiper(".mySwiper", {
+      cssMode: true,
+      modules: [Pagination, Navigation],
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
       pagination: {
         el: ".swiper-pagination",
       },
