@@ -4,7 +4,6 @@ import ProductCard from "@/components/ProductCard.astro";
 import { getCategoryName } from "@/api/querysFromDb";
 import type { Product } from "@/types/Product";
 
-
 const { products, titlePage } = Astro.props;
 
 const productsWithCategories = await Promise.all(
@@ -34,28 +33,20 @@ const productsWithCategories = await Promise.all(
     </div>
     <!-- Botones de navegación -->
     <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
   </div>
 </Section>
 <!-- Script para inicializar Swiper -->
 <script>
-  
   import Swiper from "swiper";
-  import { Navigation, Pagination } from "swiper/modules";
+  import {Pagination } from "swiper/modules";
   import "swiper/css";
-  import "swiper/css/navigation";
   import "swiper/css/pagination";
 
   new Swiper(".productSwiper", {
-    modules: [Pagination, Navigation],
+    modules: [Pagination],
     cssMode: true,
     pagination: {
       el: ".swiper-pagination",
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
     },
     loop: true,
     slidesPerView: 1,
@@ -93,7 +84,7 @@ const productsWithCategories = await Promise.all(
   }
 
   .swiper-pagination-bullet {
-    background: black;
+    color: #000;
     opacity: 0.6;
   }
 
@@ -107,6 +98,5 @@ const productsWithCategories = await Promise.all(
   .swiper-button-next {
     color: black;
     font-size: 20px;
-  },
-
+  }
 </style>

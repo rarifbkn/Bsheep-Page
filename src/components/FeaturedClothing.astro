@@ -47,11 +47,11 @@ import Section from "@/components/Section.astro";
     import "swiper/css/pagination";
 
     import Swiper from "swiper";
-    import { Navigation, Pagination } from "swiper/modules";
+    import {Pagination } from "swiper/modules";
 
     var swiper = new Swiper(".mySwiper", {
       cssMode: true,
-      modules: [Pagination, Navigation],
+      modules: [Pagination],
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -100,5 +100,13 @@ import Section from "@/components/Section.astro";
   .swiper-pagination {
     position: relative;
     bottom: -10px;
+    
+  }
+
+  /* Botones de navegación */
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: white;
+    font-size: 20px;
   }
 </style>
